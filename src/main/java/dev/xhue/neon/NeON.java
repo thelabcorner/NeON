@@ -25,6 +25,8 @@ public final class NeON extends JavaPlugin {
 
     private static NeON instance;
 
+    public static String prefix = "<bold><#FF00FF>✧ <#00FFFF>N<#FF00FF>e<#5A00FF>O<#0078FF>N</bold>";
+
     public static NeON getPlugin() { return instance; }
 
     public Logger getPluginLogger() { return logger; }

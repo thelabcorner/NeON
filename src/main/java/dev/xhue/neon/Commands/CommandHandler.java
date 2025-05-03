@@ -24,45 +24,53 @@ public class CommandHandler implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        // Assuming the command registered in plugin.yml is "neon"
         if (command.getName().equalsIgnoreCase("neon")) {
             if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
-                // Check permission
                 if (!sender.hasPermission("neon.reload")) {
-                    Component noPermMessage = miniMessage.deserialize("<red>You do not have permission to execute this command.</red>");
+                    Component noPermMessage = miniMessage.deserialize(NeON.prefix + "<red>You do not have permission to execute this command.</red>");
                     sender.sendMessage(noPermMessage);
+                    plugin.getPluginLogger().warning(legacyFromMiniMessage(NeON.prefix + "<red>Permission denied for " + sender.getName() + ".</red>"));
                     return true;
                 }
 
-                // Reload configuration
                 try {
-                    plugin.getConfigManager().reloadConfig();
-                    // You might need to re-initialize parts of your plugin that depend on the config here
-                    Component successMessage = miniMessage.deserialize("<green>NeON configuration reloaded successfully!</green>");
-                    sender.sendMessage(successMessage);
-                    plugin.getPluginLogger().info("Configuration reloaded by " + sender.getName());
+                    if (plugin.getConfigManager().reloadConfig()) {
+                        Component successMessage = miniMessage.deserialize(NeON.prefix + "<dark_gray> » <gray>NeON configuration reloaded <green>successfully<gray>!</green>");
+                        sender.sendMessage(successMessage);
+                        plugin.getPluginLogger().info(legacyFromMiniMessage(NeON.prefix + "<dark_gray> » <gray>Configuration reloaded by " + sender.getName() + ".</gray>"));
+                    } else {
+                        Component errorMessage = miniMessage.deserialize(NeON.prefix + "<dark_gray> » <red>Failed to reload NeON configuration. Check console for errors.</red>");
+                        sender.sendMessage(errorMessage);
+                    }
+
                 } catch (Exception e) {
-                    Component errorMessage = miniMessage.deserialize("<red>Failed to reload NeON configuration. Check console for errors.</red>");
+                    Component errorMessage = miniMessage.deserialize(NeON.prefix + "<dark_gray> » <red>Failed to reload NeON configuration. Check console for errors.</red>");
                     sender.sendMessage(errorMessage);
-                    plugin.getPluginLogger().severe("Error reloading configuration: " + e.getMessage());
+                    plugin.getPluginLogger().severe(legacyFromMiniMessage(NeON.prefix + "<dark_gray> » <red>Error reloading configuration: " + e.getMessage() + "</red>"));
                     e.printStackTrace();
                 }
-                return true; // Indicate the command was handled
+                return true;
             } else if (args.length > 0 && args[0].equalsIgnoreCase("firework")) {
                 if (sender instanceof Player) {
                     Player player = (Player) sender;
                     FireworkUtil.spawnRandomFirework(player.getLocation());
+                    plugin.getPluginLogger().info(legacyFromMiniMessage(NeON.prefix + "<dark_gray> » <gray>Firework launched by " + player.getName() + ".</gray>"));
                 } else {
-                    sender.sendMessage("This command can only be run by a player.");
+                    sender.sendMessage(legacyFromMiniMessage(NeON.prefix + "<dark_gray> | <red>This command can only be run by a player."));
                 }
-
             } else {
-                // Handle base /neon command or invalid arguments, e.g., show help/version
-                Component usageMessage = miniMessage.deserialize("<yellow>Usage: /neon reload</yellow>");
+                Component usageMessage = miniMessage.deserialize(NeON.prefix + "<dark_gray> » <yellow>Usage: /neon reload</yellow>");
                 sender.sendMessage(usageMessage);
                 return true;
             }
         }
-        return false; // Return false if the command is not handled by this executor
+        return false;
+    }
+
+    // Utility method to convert MiniMessage to legacy color codes for logger
+    private String legacyFromMiniMessage(String miniMsg) {
+        return net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer.legacySection().serialize(
+                miniMessage.deserialize(miniMsg)
+        );
     }
 }

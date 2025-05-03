@@ -21,7 +21,7 @@ public enum ConfigKey {
             "join.global_message.enabled",
             true,
             List.of(
-                    "■  GLOBAL JOIN MESSAGES (CHAT)",
+                    "✦  GLOBAL JOIN MESSAGES (CHAT)",
                     " ",
                     "Should global join messages be shown in chat?",
                     "Global chat player join messages are always shown to all players, including the joining player.",
@@ -33,20 +33,24 @@ public enum ConfigKey {
     ),
     JOIN_GLOBAL(
             "join.global_message.value",
-            "<dark_gray>[&a+&8] <gray>%player%",
             List.of(
-                    "■ GLOBAL JOIN MESSAGES (CHAT)",
+                    "<hover:show_text:'<dark_gray>» <aqua>Player Ping: <light_purple>%player_ping%<gray>ms\n<dark_gray>» <aqua>First Joined: <light_purple>%player_first_join_date%'><dark_gray>[&a+&8] <gray>%player%</hover>",
+                    "<dark_gray>[&a+&8] <rainbow>Join messages with NeON can be multiline!</rainbow>"
+            ),
+            List.of(
+                    "✦  GLOBAL JOIN MESSAGES (CHAT)",
                     " ",
                     "Set this to your desired chat global player join message format.",
                     "Use %player% to show the joining player username.",
-                    "[STRING]"
+                    "This can be multiline if you desire.",
+                    "[STRING LIST]"
             )
     ),
     JOIN_GLOBAL_FIRSTJOIN_BOOLEAN(
             "join.global_message.first_join.enabled",
             true,
             List.of(
-                    "■ GLOBAL FIRST-JOIN MESSAGES (CHAT)",
+                    "✦  GLOBAL FIRST-JOIN MESSAGES (CHAT)",
                     " ",
                     "Should global first time join messages be shown in chat?",
                     "Global chat player first-join messages are always shown to all players, including the joining player.",
@@ -56,20 +60,24 @@ public enum ConfigKey {
     ),
     JOIN_GLOBAL_FIRSTJOIN(
             "join.global_message.first_join.value",
-            "<dark_gray>[&a+&8] <gray>%player% <green>joined for the first time!</green>",
             List.of(
-                    "■ GLOBAL FIRST-JOIN MESSAGES (CHAT)",
+                    "<dark_gray>[&a+&8] <gray>%player% <green>joined for the first time!</green>",
+                    "<dark_gray>[&a+&8] <green>The first time-join message can be multiline!</green>"
+                    ),
+            List.of(
+                    "✦  GLOBAL FIRST-JOIN MESSAGES (CHAT)",
                     " ",
                     "Set this to your desired chat global player first-join message format.",
                     "Use %player% to show the joining player username.",
-                    "[STRING]"
+                    "This can be multiline if you desire.",
+                    "[STRING LIST]"
             )
     ),
     JOIN_GLOBAL_CENTERED(
             "join.global_message.centered",
             true,
             List.of(
-                    "■ CENTER GLOBAL JOIN MESSAGES (CHAT)",
+                    "✦  CENTER GLOBAL JOIN MESSAGES (CHAT)",
                     " ",
                     "Should the chat global player join message be centered?",
                     "If you set this to false, the message will be shown in the default left-aligned format.",
@@ -83,7 +91,7 @@ public enum ConfigKey {
             "join.player_motd.enabled",
             true,
             List.of(
-                    "■ ENABLE PLAYER JOIN MESSAGE (MOTD)",
+                    "✦  ENABLE PLAYER JOIN MESSAGE (MOTD)",
                     " ",
                     "Should joining players be shown the MOTD?",
                     "If you enable this & you're using essentials, you likely should disable the default Essentials MOTD.",
@@ -95,7 +103,7 @@ public enum ConfigKey {
             "join.player_motd.centered",
             true,
             List.of(
-                    "■ CENTER PLAYER JOIN MESSAGE (MOTD)",
+                    "✦  CENTER PLAYER JOIN MESSAGE (MOTD)",
                     " ",
                     "Should the join message (MOTD) be automatically centered?",
                     "[TRUE/FALSE]"
@@ -109,35 +117,35 @@ public enum ConfigKey {
                     "<reset>",
                     "<dark_gray>      <strikethrough>                 </strikethrough>",
                     "<dark_gray>",
-                    "<dark_gray>┏<strikethrough>           </strikethrough> <gradient:#FFD200:#F7971E><bold>SERVER STATUS</bold></gradient> <strikethrough>           </strikethrough>┓</dark_gray>",
+                    "<dark_gray>┏<strikethrough>           </strikethrough> <gradient:#FF00FF:#00FFFF><bold>SERVER STATUS</bold></gradient> <strikethrough>           </strikethrough>┓</dark_gray>",
                     "<reset>",
-                    "<dark_gray></dark_gray> <aqua>Players:</aqua> <light_purple>%server_online%</light_purple><dark_gray>/</dark_gray><light_purple>%server_max_players% <dark_gray>┃</dark_gray> <aqua>Version:</aqua> <yellow>%server_version%</yellow><dark_gray></dark_gray>",
+                    "<dark_gray></dark_gray> <aqua>Players:</aqua> <light_purple>%server_online%</light_purple><dark_gray>/</dark_gray><light_purple>%server_max_players% <dark_gray>┃</dark_gray> <aqua>%server_variant%</aqua> <yellow>%server_version%</yellow><dark_gray></dark_gray>",
                     "<reset>",
                     "<dark_gray>      ┗<strikethrough>                                              </strikethrough>┛</dark_gray>",
                     "<reset>",
-                    "<dark_gray>┏<strikethrough>               </strikethrough> <gradient:#4568DC:#B06AB3><bold>CONNECTIONS</bold></gradient><strikethrough>               </strikethrough>┓</dark_gray>",
+                    "<dark_gray>┏<strikethrough>               </strikethrough> <gradient:#FF00FF:#00FFFF><bold>CONNECTIONS</bold></gradient><strikethrough>               </strikethrough>┓</dark_gray>",
                     "<reset>",
                     "<dark_gray></dark_gray> <aqua>Server IP:</aqua> <yellow><hover:show_text:Click to copy to clipboard!><click:copy_to_clipboard:play.xhue.dev>play.xhue.dev</click></hover></yellow><dark_gray></dark_gray>",
                     "<dark_gray></dark_gray> <aqua>Discord:</aqua> <yellow><hover:show_text:Join our community!><click:open_url:https://discord.gg/xhue>discord.gg/xhue</click></hover></yellow><dark_gray></dark_gray>",
                     "<reset>",
                     "<dark_gray>     ┗<strikethrough>                                                   </strikethrough>┛</dark_gray>",
                     "<reset>",
-                    "<dark_gray>┏<strikethrough>                   </strikethrough> <gradient:#43C6AC:#191654><bold>RESOURCES</bold></gradient><strikethrough>                    </strikethrough>┓</dark_gray>",
+                    "<dark_gray>┏<strikethrough>                   </strikethrough> <gradient:#FF00FF:#00FFFF><bold>RESOURCES</bold></gradient><strikethrough>                    </strikethrough>┓</dark_gray>",
                     "<reset>",
-                    "<dark_gray></dark_gray> <hover:show_text:Learn about formatting!><gradient:#FDC830:#F37335>• MiniMessage Guide:</gradient> <click:open_url:https://docs.advntr.dev/minimessage><aqua><underlined>Click Here</underlined></aqua></click></hover> <dark_gray></dark_gray>",
-                    "<dark_gray></dark_gray> <gradient:#FDC830:#F37335>• Commands:</gradient> <yellow><hover:show_text:View all commands><click:suggest_command:/help>/help</click></hover></yellow> <dark_gray></dark_gray>",
+                    "<dark_gray></dark_gray> <hover:show_text:'<rainbow>Learn about MiniMessage formatting!</rainbow>'><click:open_url:https://docs.advntr.dev/minimessage><rainbow>• MiniMessage Guide:</rainbow> <aqua><underlined>Click Here</underlined></aqua></click></hover> <dark_gray></dark_gray>",
+                    "<dark_gray></dark_gray> <gradient:#FF00FF:#00FFFF:#FF00FF>• Commands:</gradient> <hover:show_text:'<gradient:#FF00FF:#00FFFF:#FF00FF>View all commands</gradient>'><click:suggest_command:/neon help><gradient:#FF00FF:#00FFFF:#FF00FF><underlined>/neon help</underlined></gradient></click></hover> <dark_gray></dark_gray>",
                     "<reset>",
-                    "<dark_gray>     ┗<strikethrough>                                                         </strikethrough>┛</dark_gray>",
+                    "<dark_gray>     ┗<strikethrough>                                                        </strikethrough>┛</dark_gray>",
                     "<reset>",
                     "<gradient:#ED213A:#93291E><bold>✦ IMPORTANT NOTICE ✦</bold></gradient>",
                     "<yellow><italic>Please review the server rules with /rules</italic></yellow>",
                     "<reset>"
             ),
             List.of( // comment
-                    "■ PLAYER JOIN MESSAGE FORMAT (MOTD)",
+                    "✦  PLAYER JOIN MESSAGE FORMAT (MOTD)",
                     " ",
                     "Set this to your desired join MOTD message format.",
-                    "Due to the nature of minimessage parsing, it's advised not to surround things in this message with '<' & '>' unless it is a minimessage tag.",
+                    "Due to the nature of minimessage parsing, it's advised not to surround things in this message with '<' || '>' unless it is a minimessage tag.",
                     "If you must do this, be advised that auto-centering may or may not work as expected.",
                     "Use %player% to show the joining player username.",
                     "Minimessage reference: https://docs.advntr.dev/minimessage/format.html",
@@ -150,7 +158,7 @@ public enum ConfigKey {
             "join.player_title.enabled",
             true,
             List.of(
-                    "■ ENABLE PLAYER JOIN TITLE",
+                    "✦  ENABLE PLAYER JOIN TITLE",
                     " ",
                     "Should players be shown a title",
                     "[TRUE/FALSE]"
@@ -160,7 +168,7 @@ public enum ConfigKey {
             "join.player_title.title",
             "<#FF00FF>✧ <#00FFFF>N<#AD00FF>e<#5A00FF>O<#0078FF>N<#FF00FF> ✧",
             List.of( // comment
-                    "■ PLAYER JOIN TITLE FORMAT",
+                    "✦  PLAYER JOIN TITLE FORMAT",
                     " ",
                     "Set this to your desired join title message format.",
                     "Set this to an empty string (\"\") to only show subtitle.",
@@ -172,7 +180,7 @@ public enum ConfigKey {
             "join.player_title.subtitle",
        "<gray><italic>dev.xhue.NeON",
             List.of( // comment
-                    "■ PLAYER JOIN SUBTITLE FORMAT",
+                    "✦  PLAYER JOIN SUBTITLE FORMAT",
                     " ",
                     "Set this to your desired join subtitle message format.",
                     "Set this to an empty string (\"\") to only show title.",
@@ -184,7 +192,7 @@ public enum ConfigKey {
             "join.player_title.time",
             3,
             List.of( // comment
-                    "■ PLAYER JOIN TITLE TIME",
+                    "✦  PLAYER JOIN TITLE TIME",
                     " ",
                     "Set this to your desired title display time, in seconds.",
                     "[LONG]"
@@ -197,7 +205,7 @@ public enum ConfigKey {
             "join.global_title.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE GLOBAL PLAYER JOIN TITLE",
+                    "✦  ENABLE GLOBAL PLAYER JOIN TITLE",
                     " ",
                     "Should all players be shown a title on player join?",
                     "Global messages are shown to all players, including the joining player, unless player independant is enabled.",
@@ -209,7 +217,7 @@ public enum ConfigKey {
             "join.global_title.title",
             "<#FF00FF>✧ <#00FFFF>N<#AD00FF>e<#5A00FF>O<#0078FF>N<#FF00FF> ✧",
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN TITLE FORMAT",
+                    "✦  GLOBAL PLAYER JOIN TITLE FORMAT",
                     " ",
                     "Set this to your desired join title message format.",
                     "Set this to an empty string (\"\") to only show subtitle.",
@@ -222,7 +230,7 @@ public enum ConfigKey {
             "join.global_title.subtitle",
             "<gray><italic>dev.xhue.NeON",
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN SUBTITLE FORMAT",
+                    "✦  GLOBAL PLAYER JOIN SUBTITLE FORMAT",
                     " ",
                     "Set this to your desired join subtitle message format.",
                     "Set this to an empty string (\"\") to only show title.",
@@ -235,7 +243,7 @@ public enum ConfigKey {
             "join.global_title.time",
             3,
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN TITLE TIME",
+                    "✦  GLOBAL PLAYER JOIN TITLE TIME",
                     " ",
                     "Set this to your desired time for the title to be displayed, in seconds.",
                     "[LONG]"
@@ -248,7 +256,7 @@ public enum ConfigKey {
             "join.player_actionbar.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE PLAYER JOIN ACTION-BAR",
+                    "✦  ENABLE PLAYER JOIN ACTION-BAR",
                     " ",
                     "Should players be shown an action bar on join?",
                     "[TRUE/FALSE]"
@@ -258,7 +266,7 @@ public enum ConfigKey {
             "join.player_actionbar.value",
             "<aqua>Have fun!",
             List.of( // comment
-                    "■ PLAYER JOIN ACTION-BAR FORMAT",
+                    "✦  PLAYER JOIN ACTION-BAR FORMAT",
                     " ",
                     "Set this to your desired join actionbar message format.",
                     "Use %player% to show the player username.",
@@ -269,7 +277,7 @@ public enum ConfigKey {
             "join.player_actionbar.time",
             3,
             List.of( // comment
-                    "■ PLAYER JOIN ACTION-BAR TIME",
+                    "✦  PLAYER JOIN ACTION-BAR TIME",
                     " ",
                     "Set this to your desired actionbar display time, in seconds.",
                     "[LONG]"
@@ -281,7 +289,7 @@ public enum ConfigKey {
             "join.global_actionbar.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE GLOBAL PLAYER JOIN ACTION-BAR",
+                    "✦  ENABLE GLOBAL PLAYER JOIN ACTION-BAR",
                     " ",
                     "Should all players be shown an action bar on player join?",
                     "Global messages are shown to all players, including the joining player, unless player independant is enabled.",
@@ -293,7 +301,7 @@ public enum ConfigKey {
             "join.global_actionbar.value",
             "<aqua>Have fun!",
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN ACTION-BAR FORMAT",
+                    "✦  GLOBAL PLAYER JOIN ACTION-BAR FORMAT",
                     " ",
                     "Set this to your desired join actionbar message format.",
                     "Use %joined_player% to show the player who joined.",
@@ -305,7 +313,7 @@ public enum ConfigKey {
             "join.global_actionbar.time",
             3,
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN ACTION-BAR TIME",
+                    "✦  GLOBAL PLAYER JOIN ACTION-BAR TIME",
                     " ",
                     "Set this to your desired actionbar display time, in seconds.",
                     "[LONG]"
@@ -318,7 +326,7 @@ public enum ConfigKey {
             "join.player_bossbar.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE PLAYER JOIN BOSS-BAR",
+                    "✦  ENABLE PLAYER JOIN BOSS-BAR",
                     " ",
                     "Should the joining player be shown a boss-bar on join?",
                     "[TRUE/FALSE]"
@@ -328,7 +336,7 @@ public enum ConfigKey {
             "join.player_bossbar.value",
             "<aqua>Have fun!",
             List.of( // comment
-                    "■ PLAYER JOIN BOSS-BAR FORMAT",
+                    "✦  PLAYER JOIN BOSS-BAR FORMAT",
                     " ",
                     "Set this to your desired join boss-bar message format.",
                     "Use %player% to show the player username.",
@@ -339,7 +347,7 @@ public enum ConfigKey {
             "join.player_bossbar.color",
             "blue",
             List.of( // comment
-                    "■ PLAYER JOIN BOSS-BAR COLOR",
+                    "✦  PLAYER JOIN BOSS-BAR COLOR",
                     " ",
                     "Set this to your desired join bossbar color.",
                     "[STRING]"
@@ -349,7 +357,7 @@ public enum ConfigKey {
             "join.player_bossbar.style",
             "PROGRESS",
             List.of( // comment
-                    "■ PLAYER JOIN BOSS-BAR STYLE",
+                    "✦  PLAYER JOIN BOSS-BAR STYLE",
                     " ",
                     "Set this to your desired join bossbar style.",
                     "[ PROGRESS || NOTCHED_6 || NOTCHED_10 || NOTCHED_12 || NOTCHED_20 ]"
@@ -359,7 +367,7 @@ public enum ConfigKey {
             "join.player_bossbar.duration",
             5,
             List.of( // comment
-                    "■ PLAYER JOIN BOSS-BAR DURATION",
+                    "✦  PLAYER JOIN BOSS-BAR DURATION",
                     " ",
                     "Set this to your desired join boss-bar duration, in seconds.",
                     "[LONG]"
@@ -369,7 +377,7 @@ public enum ConfigKey {
             "join.player_bossbar.direction",
             "RIGHT_TO_LEFT_CUBIC",
             List.of( // comment
-                    "■ PLAYER JOIN BOSS-BAR DIRECTION",
+                    "✦  PLAYER JOIN BOSS-BAR DIRECTION",
                     " ",
                     "Set this to your desired join boss-bar direction.",
                     "'_CUBIC' denoted directions use a simple cubic bezier curve to animate the boss-bar progression.",
@@ -385,7 +393,7 @@ public enum ConfigKey {
             "join.global_bossbar.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE GLOBAL PLAYER JOIN BOSS-BAR",
+                    "✦  ENABLE GLOBAL PLAYER JOIN BOSS-BAR",
                     " ",
                     "Should all players be shown a global boss-bar on player join?",
                     "Global messages are shown to all players, including the joining player, unless player independant is enabled.",
@@ -397,7 +405,7 @@ public enum ConfigKey {
             "join.global_bossbar.value",
             "<aqua>Have fun!",
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN BOSS-BAR FORMAT",
+                    "✦  GLOBAL PLAYER JOIN BOSS-BAR FORMAT",
                     " ",
                     "Set this to your desired join bossbar message format.",
                     "Use %joined_player% to show the player who joined.",
@@ -409,7 +417,7 @@ public enum ConfigKey {
             "join.global_bossbar.color",
             "WHITE",
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN BOSS-BAR COLOR",
+                    "✦  GLOBAL PLAYER JOIN BOSS-BAR COLOR",
                     " ",
                     "Set this to your desired join bossbar color.",
                     "[ PINK || BLUE || RED || GREEN || YELLOW || PURPLE || WHITE ]"
@@ -419,7 +427,7 @@ public enum ConfigKey {
             "join.global_bossbar.style",
             "PROGRESS",
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN BOSS-BAR STYLE",
+                    "✦  GLOBAL PLAYER JOIN BOSS-BAR STYLE",
                     " ",
                     "Set this to your desired join bossbar style.",
                     "[ PROGRESS || NOTCHED_6 || NOTCHED_10 || NOTCHED_12 || NOTCHED_20 ]"
@@ -429,7 +437,7 @@ public enum ConfigKey {
             "join.global_bossbar.duration",
             5,
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN BOSS-BAR DURATION",
+                    "✦  GLOBAL PLAYER JOIN BOSS-BAR DURATION",
                     " ",
                     "Set this to your desired join boss-bar duration, in seconds.",
                     "[LONG]"
@@ -439,7 +447,7 @@ public enum ConfigKey {
             "join.global_bossbar.direction",
             "RIGHT_TO_LEFT_CUBIC",
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN BOSS-BAR DIRECTION",
+                    "✦  GLOBAL PLAYER JOIN BOSS-BAR DIRECTION",
                     " ",
                     "Set this to your desired join boss-bar direction.",
                     "'_CUBIC' denoted directions use a simple cubic bezier curve to animate the boss-bar progression.",
@@ -455,7 +463,7 @@ public enum ConfigKey {
             "join.sound.player.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE PLAYER JOIN SOUND",
+                    "✦  ENABLE PLAYER JOIN SOUND",
                     " ",
                     "Should a sound be played to the joining player?",
                     "[TRUE/FALSE]"
@@ -465,7 +473,7 @@ public enum ConfigKey {
             "join.sound.player.value",
             "minecraft:block.note_block.pling",
             List.of( // comment
-                    "■ PLAYER JOIN SOUND VALUE",
+                    "✦  PLAYER JOIN SOUND VALUE",
                     " ",
                     "Set this to the sound ENUM the joining player should hear played.",
                     "Sound value reference: https://minecraft.wiki/w/Sounds.json/Java_Edition_values",
@@ -477,7 +485,7 @@ public enum ConfigKey {
             "join.sound.player.pitch_volume",
             List.of("1.0f", "1.0f"),
             List.of( // comment
-                    "■ PLAYER JOIN SOUND PITCH & VOLUME",
+                    "✦  PLAYER JOIN SOUND PITCH & VOLUME",
                     " ",
                     "Set this to the sound pitch and volume the joining player should hear played.",
                     "Values are a list of two floats, the first is the pitch, the second is the volume.",
@@ -492,7 +500,7 @@ public enum ConfigKey {
             "join.sound.global.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE GLOBAL PLAYER JOIN SOUND",
+                    "✦  ENABLE GLOBAL PLAYER JOIN SOUND",
                     " ",
                     "Should a sound be played to all online users upon a player joining?",
                     "[TRUE/FALSE]"
@@ -502,7 +510,7 @@ public enum ConfigKey {
             "join.sound.global.value",
             "minecraft:block.note_block.pling",
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN SOUND VALUE",
+                    "✦  GLOBAL PLAYER JOIN SOUND VALUE",
                     " ",
                     "Set this to the sound ENUM all online users will hear played.",
                     "Sound value reference: https://minecraft.wiki/w/Sounds.json/Java_Edition_values",
@@ -514,7 +522,7 @@ public enum ConfigKey {
             "join.sound.global.pitch_volume",
             List.of("1.0f", "1.0f"),
             List.of( // comment
-                    "■ GLOBAL PLAYER JOIN SOUND PITCH & VOLUME",
+                    "✦  GLOBAL PLAYER JOIN SOUND PITCH & VOLUME",
                     " ",
                     "Set this to the sound pitch and volume all online users will hear played.",
                     "Values are a list of two floats, the first is the pitch, the second is the volume.",
@@ -531,7 +539,7 @@ public enum ConfigKey {
             "join.fireworks.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE PLAYER JOIN FIREWORKS",
+                    "✦  ENABLE PLAYER JOIN FIREWORKS",
                     " ",
                     "Should a firework be launched for the joining player?",
                     "[TRUE/FALSE]"
@@ -541,7 +549,7 @@ public enum ConfigKey {
             "join.fireworks.player.randomize",
             false,
             List.of( // comment
-                    "■ RANDOMIZE PLAYER JOIN FIREWORKS",
+                    "✦  RANDOMIZE PLAYER JOIN FIREWORKS",
                     " ",
                     "Should a randomized firework be launched for the joining player?",
                     "NOTE: This must be set to false to use the firework settings below.",
@@ -552,7 +560,7 @@ public enum ConfigKey {
             "join.fireworks.color",
             List.of("#00FFFF", "#F63CB1"),
             List.of( // comment
-                    "■ PLAYER JOIN FIREWORKS COLOR",
+                    "✦  PLAYER JOIN FIREWORKS COLOR",
                     " ",
                     "Set this to the color(s) of the firework.",
                     "NOTE: Randomize firework must be disabled for this to work.",
@@ -568,7 +576,7 @@ public enum ConfigKey {
             "join.fireworks.fade_color",
             List.of("#F63CB1", "#00FFFF"),
             List.of( // comment
-                    "■ PLAYER JOIN FIREWORKS FADE COLOR",
+                    "✦  PLAYER JOIN FIREWORKS FADE COLOR",
                     " ",
                     "Set this to the fade color(s) of the firework.",
                     "NOTE: Randomize firework must be disabled for this to work.",
@@ -584,7 +592,7 @@ public enum ConfigKey {
             "join.fireworks.type",
             "BALL_LARGE",
             List.of( // comment
-                    "■ PLAYER JOIN FIREWORKS TYPE",
+                    "✦  PLAYER JOIN FIREWORKS TYPE",
                     " ",
                     "Set this to your desired firework type.",
                     "NOTE: Randomize firework must be disabled for this to work.",
@@ -595,7 +603,7 @@ public enum ConfigKey {
             "join.fireworks.flicker",
             true,
             List.of( // comment
-                    "■ PLAYER JOIN FIREWORKS FLICKER",
+                    "✦  PLAYER JOIN FIREWORKS FLICKER",
                     " ",
                     "Should the firework flicker?",
                     "NOTE: Randomize firework must be disabled for this to work.",
@@ -606,7 +614,7 @@ public enum ConfigKey {
             "join.fireworks.trail",
             true,
             List.of( // comment
-                    "■ PLAYER JOIN FIREWORKS TRAIL",
+                    "✦  PLAYER JOIN FIREWORKS TRAIL",
                     " ",
                     "Should the firework have a trail?",
                     "NOTE: Randomize firework must be disabled for this to work.",
@@ -617,7 +625,7 @@ public enum ConfigKey {
             "join.fireworks.power",
             1,
             List.of( // comment
-                    "■ PLAYER JOIN FIREWORKS POWER LEVEL",
+                    "✦  PLAYER JOIN FIREWORKS POWER LEVEL",
                     " ",
                     "Set the power level of the spawned firework.",
                     "NOTE: Randomize firework must be disabled for this to work.",
@@ -630,7 +638,7 @@ public enum ConfigKey {
             "join.particle.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE PLAYER JOIN PARTICLE",
+                    "✦  ENABLE PLAYER JOIN PARTICLE",
                     " ",
                     "Should a particle effect be shown to the joining player?",
                     "[TRUE/FALSE]"
@@ -640,7 +648,7 @@ public enum ConfigKey {
             "join.particle.type",
             "HAPPY_VILLAGER",
             List.of( // comment
-                    "■ PLAYER JOIN PARTICLE TYPE",
+                    "✦  PLAYER JOIN PARTICLE TYPE",
                     " ",
                     "Set this to the particle effect the joining player should see.",
                     "[STRING]"
@@ -650,7 +658,7 @@ public enum ConfigKey {
             "join.particle.amount",
             10,
             List.of( // comment
-                    "■ PLAYER JOIN PARTICLE AMOUNT",
+                    "✦  PLAYER JOIN PARTICLE AMOUNT",
                     " ",
                     "Set this to the amount of particles the joining player should see.",
                     "[INTEGER]"
@@ -660,7 +668,7 @@ public enum ConfigKey {
             "join.particle.radius",
             1.25,
             List.of( // comment
-                    "■ PLAYER JOIN PARTICLE RADIUS",
+                    "✦  PLAYER JOIN PARTICLE RADIUS",
                     " ",
                     "Set this to the radius of the particle effect the joining player should see.",
                     "[LONG]"
@@ -670,10 +678,32 @@ public enum ConfigKey {
             "join.particle.speed",
             0.5,
             List.of( // comment
-                    "■ PLAYER JOIN PARTICLE SPEED",
+                    "✦  PLAYER JOIN PARTICLE SPEED",
                     " ",
                     "Set this to the speed of the particle effect the joining player should see.",
                     "[DOUBLE]"
+            )
+    ),
+
+
+    JOIN_PLAYER_RESOURCEPACK_BOOLEAN(
+            "join.resource_pack.enabled",
+            false,
+            List.of( // comment
+                    "✦  ENABLE PLAYER JOIN RESOURCE PACK",
+                    " ",
+                    "Should a resource pack be sent to the joining player?",
+                    "[TRUE/FALSE]"
+            )
+    ),
+    JOIN_PLAYER_RESOURCEPACK_URL(
+            "join.resource_pack.url",
+            "<enter_pack_url_here>",
+            List.of( // comment
+                    "✦  PLAYER JOIN RESOURCE PACK URL",
+                    " ",
+                    "Set this to the URL of the resource pack to send to the joining player.",
+                    "[STRING]"
             )
     ),
 
@@ -694,7 +724,7 @@ public enum ConfigKey {
             "leave.global_message.enabled",
             true,
             List.of(
-                    "■ ENABLE GLOBAL LEAVE MESSAGES (CHAT)",
+                    "✦  ENABLE GLOBAL LEAVE MESSAGES (CHAT)",
                     " ",
                     "Should global leave messages be shown in chat?",
                     "[TRUE/FALSE]"
@@ -702,20 +732,24 @@ public enum ConfigKey {
     ),
     LEAVE_GLOBAL(
             "leave.global_message.value",
-            "<dark_gray>[&c-&8] <light_purple>%player%",
             List.of(
-                    "■ GLOBAL LEAVE MESSAGES FORMAT (CHAT)",
+                    "<dark_gray>[&c-&8] <light_purple>%player%",
+                    "<dark_gray>[&c-&8] <rainbow>Leave messages with NeON can be multiline!</rainbow>"
+            ),
+            List.of(
+                    "✦  GLOBAL LEAVE MESSAGES FORMAT (CHAT)",
                     " ",
                     "Set this to your desired chat global player leave message format.",
                     "Use %player% to show the leaving player username.",
-                    "[STRING]"
+                    "This can be multiline if you desire.",
+                    "[STRING LIST]"
             )
     ),
     LEAVE_GLOBAL_CENTERED(
             "leave.global_message.centered",
             true,
             List.of(
-                    "■ CENTER GLOBAL LEAVE MESSAGES (CHAT)",
+                    "✦  CENTER GLOBAL LEAVE MESSAGES (CHAT)",
                     " ",
                     "Should the chat global player leave message be centered?",
                     "[TRUE/FALSE]"
@@ -728,7 +762,7 @@ public enum ConfigKey {
             "leave.global_title.enabled",
             true,
             List.of(
-                    "■ ENABLE GLOBAL PLAYER LEAVE TITLE",
+                    "✦  ENABLE GLOBAL PLAYER LEAVE TITLE",
                     " ",
                     "Should all players be shown a title on player leave?",
                     "Global is the only option, since the player is leaving.",
@@ -740,7 +774,7 @@ public enum ConfigKey {
             "leave.global_title.title",
             "<red><bold>%left_player% LEFT",
             List.of(
-                    "■ GLOBAL PLAYER LEAVE TITLE FORMAT",
+                    "✦  GLOBAL PLAYER LEAVE TITLE FORMAT",
                     " ",
                     "Set this to your desired leave title message format.",
                     "Set this to an empty string (\"\") to only show subtitle.",
@@ -753,7 +787,7 @@ public enum ConfigKey {
             "leave.global_title.subtitle",
             "<gray><italic>dev.xhue.NeON",
             List.of(
-                    "■ GLOBAL PLAYER LEAVE SUBTITLE FORMAT",
+                    "✦  GLOBAL PLAYER LEAVE SUBTITLE FORMAT",
                     " ",
                     "Set this to your desired leave subtitle message format.",
                     "Set this to an empty string (\"\") to only show title.",
@@ -766,7 +800,7 @@ public enum ConfigKey {
             "leave.global_title.time",
             3,
             List.of(
-                    "■ GLOBAL PLAYER LEAVE TITLE TIME",
+                    "✦  GLOBAL PLAYER LEAVE TITLE TIME",
                     " ",
                     "Set this to your desired time for the title to be displayed, in seconds.",
                     "[LONG]"
@@ -778,7 +812,7 @@ public enum ConfigKey {
             "leave.global_actionbar.enabled",
             true,
             List.of(
-                    "■ ENABLE GLOBAL PLAYER LEAVE ACTION-BAR",
+                    "✦  ENABLE GLOBAL PLAYER LEAVE ACTION-BAR",
                     " ",
                     "Should all players be shown an action bar on player leave?",
                     "Global is the only option, since the player is leaving.",
@@ -790,7 +824,7 @@ public enum ConfigKey {
             "leave.global_actionbar.value",
             "<red>%left_player% left!",
             List.of(
-                    "■ GLOBAL PLAYER LEAVE ACTION-BAR FORMAT",
+                    "✦  GLOBAL PLAYER LEAVE ACTION-BAR FORMAT",
                     " ",
                     "Set this to your desired leave actionbar message format.",
                     "Use %left_player% to show the player who left.",
@@ -802,7 +836,7 @@ public enum ConfigKey {
             "leave.global_actionbar.time",
             3,
             List.of(
-                    "■ GLOBAL PLAYER LEAVE ACTION-BAR TIME",
+                    "✦  GLOBAL PLAYER LEAVE ACTION-BAR TIME",
                     " ",
                     "Set this to your desired actionbar display time, in seconds.",
                     "[LONG]"
@@ -813,7 +847,7 @@ public enum ConfigKey {
             "leave.global_bossbar.enabled",
             false,
             List.of(
-                    "■ ENABLE GLOBAL PLAYER LEAVE BOSS-BAR",
+                    "✦  ENABLE GLOBAL PLAYER LEAVE BOSS-BAR",
                     " ",
                     "Should all players be shown a global boss-bar on player leave?",
                     "Global is the only option, since the player is leaving.",
@@ -824,7 +858,7 @@ public enum ConfigKey {
             "leave.global_bossbar.value",
             "<red>%left_player% left!",
             List.of(
-                    "■ GLOBAL PLAYER LEAVE BOSS-BAR FORMAT",
+                    "✦  GLOBAL PLAYER LEAVE BOSS-BAR FORMAT",
                     " ",
                     "Set this to your desired leave bossbar message format.",
                     "Use %left_player% to show the player who left.",
@@ -836,7 +870,7 @@ public enum ConfigKey {
             "leave.global_bossbar.color",
             "RED",
             List.of(
-                    "■ GLOBAL PLAYER LEAVE BOSS-BAR COLOR",
+                    "✦  GLOBAL PLAYER LEAVE BOSS-BAR COLOR",
                     " ",
                     "Set this to your desired leave bossbar color.",
                     "[ PINK || BLUE || RED || GREEN || YELLOW || PURPLE || WHITE ]"
@@ -846,7 +880,7 @@ public enum ConfigKey {
             "leave.global_bossbar.style",
             "PROGRESS",
             List.of(
-                    "■ GLOBAL PLAYER LEAVE BOSS-BAR STYLE",
+                    "✦  GLOBAL PLAYER LEAVE BOSS-BAR STYLE",
                     " ",
                     "Set this to your desired leave bossbar style.",
                     "[ PROGRESS || NOTCHED_6 || NOTCHED_10 || NOTCHED_12 || NOTCHED_20 ]"
@@ -856,7 +890,7 @@ public enum ConfigKey {
             "leave.global_bossbar.duration",
             5,
             List.of(
-                    "■ GLOBAL PLAYER LEAVE BOSS-BAR DURATION",
+                    "✦  GLOBAL PLAYER LEAVE BOSS-BAR DURATION",
                     " ",
                     "Set this to your desired leave boss-bar duration, in seconds.",
                     "[LONG]"
@@ -866,7 +900,7 @@ public enum ConfigKey {
             "leave.global_bossbar.direction",
             "RIGHT_TO_LEFT_CUBIC",
             List.of(
-                    "■ GLOBAL PLAYER LEAVE BOSS-BAR DIRECTION",
+                    "✦  GLOBAL PLAYER LEAVE BOSS-BAR DIRECTION",
                     " ",
                     "Set this to your desired leave boss-bar direction.",
                     "'_CUBIC' denoted directions use a simple cubic bezier curve to animate the boss-bar progression.",
@@ -879,7 +913,7 @@ public enum ConfigKey {
             "leave.sound.player.enabled",
             false,
             List.of(
-                    "■ ENABLE PLAYER LEAVE SOUND",
+                    "✦  ENABLE PLAYER LEAVE SOUND",
                     " ",
                     "Should a sound be played to the leaving player?",
                     "NOTE: This is a leaving player specific sound (not global), meaning it will only be played to the leaving player... 90% chance they won't hear it.",
@@ -890,7 +924,7 @@ public enum ConfigKey {
             "leave.sound.player.value",
             "minecraft:block.note_block.bass",
             List.of(
-                    "■ PLAYER LEAVE SOUND VALUE",
+                    "✦  PLAYER LEAVE SOUND VALUE",
                     " ",
                     "Set this to the sound ENUM the leaving player should hear played.",
                     "Sound value reference: https://minecraft.wiki/w/Sounds.json/Java_Edition_values",
@@ -902,7 +936,7 @@ public enum ConfigKey {
             "leave.sound.player.pitch_volume",
             List.of("1.0f", "1.0f"),
             List.of(
-                    "■ PLAYER LEAVE SOUND PITCH & VOLUME",
+                    "✦  PLAYER LEAVE SOUND PITCH & VOLUME",
                     " ",
                     "Set this to the sound pitch and volume the leaving player should hear played.",
                     "Values are a list of two floats, the first is the pitch, the second is the volume.",
@@ -916,7 +950,7 @@ public enum ConfigKey {
             "leave.sound.global.enabled",
             false,
             List.of(
-                    "■ ENABLE GLOBAL PLAYER LEAVE SOUND",
+                    "✦  ENABLE GLOBAL PLAYER LEAVE SOUND",
                     " ",
                     "Should a sound be played to all online users upon a player leaving?",
                     "[TRUE/FALSE]"
@@ -926,7 +960,7 @@ public enum ConfigKey {
             "leave.sound.global.value",
             "minecraft:block.note_block.bass",
             List.of(
-                    "■ GLOBAL PLAYER LEAVE SOUND VALUE",
+                    "✦  GLOBAL PLAYER LEAVE SOUND VALUE",
                     " ",
                     "Set this to the sound ENUM all online users will hear played.",
                     "Sound value reference: https://minecraft.wiki/w/Sounds.json/Java_Edition_values",
@@ -938,7 +972,7 @@ public enum ConfigKey {
             "leave.sound.global.pitch_volume",
             List.of("1.0f", "1.0f"),
             List.of(
-                    "■ GLOBAL PLAYER LEAVE SOUND PITCH & VOLUME",
+                    "✦  GLOBAL PLAYER LEAVE SOUND PITCH & VOLUME",
                     " ",
                     "Set this to the sound pitch and volume all online users will hear played.",
                     "Values are a list of two floats, the first is the pitch, the second is the volume.",
@@ -953,7 +987,7 @@ public enum ConfigKey {
             "leave.particle.enabled",
             true,
             List.of( // comment
-                    "■ ENABLE PLAYER LEAVE PARTICLE",
+                    "✦  ENABLE PLAYER LEAVE PARTICLE",
                     " ",
                     "Should a particle effect be shown to the leaving player?",
                     "[TRUE/FALSE]"
@@ -963,7 +997,7 @@ public enum ConfigKey {
             "leave.particle.type",
             "CAMPFIRE_COSY_SMOKE",
             List.of( // comment
-                    "■ PLAYER LEAVE PARTICLE TYPE",
+                    "✦  PLAYER LEAVE PARTICLE TYPE",
                     " ",
                     "Set this to the particle effect the leaving player should see.",
                     "[STRING]"
@@ -973,7 +1007,7 @@ public enum ConfigKey {
             "leave.particle.amount",
             10,
             List.of( // comment
-                    "■ PLAYER LEAVE PARTICLE AMOUNT",
+                    "✦  PLAYER LEAVE PARTICLE AMOUNT",
                     " ",
                     "Set this to the amount of particles the leaving player should see.",
                     "[INTEGER]"
@@ -983,7 +1017,7 @@ public enum ConfigKey {
             "leave.particle.radius",
             0.5,
             List.of( // comment
-                    "■ PLAYER LEAVE PARTICLE RADIUS",
+                    "✦  PLAYER LEAVE PARTICLE RADIUS",
                     " ",
                     "Set this to the radius of the particle effect the leaving player should see.",
                     "[LONG]"
@@ -993,7 +1027,7 @@ public enum ConfigKey {
             "leave.particle.speed",
             0.015,
             List.of( // comment
-                    "■ PLAYER LEAVE PARTICLE SPEED",
+                    "✦  PLAYER LEAVE PARTICLE SPEED",
                     " ",
                     "Set this to the speed of the particle effect the leaving player should see.",
                     "[DOUBLE]"

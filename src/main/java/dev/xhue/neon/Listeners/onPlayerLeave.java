@@ -37,7 +37,7 @@ public class onPlayerLeave implements Listener {
 
         // Global chat leave message settings
         boolean isGlobalEnabled = configManager.config.getBoolean("leave.global_message.enabled", true);
-        String global_raw = configManager.config.getString("leave.global_message.value", "<dark_gray>[&c-&8] %essentials_nickname%");
+        List<String> global_raw = configManager.config.getStringList("leave.global_message.value");
         boolean isGlobalCentered = configManager.config.getBoolean("leave.global_message.centered", true);
 
         // Title settings
@@ -100,15 +100,16 @@ public class onPlayerLeave implements Listener {
 
         // global chat leave message
         if (isGlobalEnabled) {
-            global_raw = PlaceholderAPI.setPlaceholders(p, global_raw);
-            global_raw = PlaceholderUtils.replacePlaceholder(global_raw, "%player%", p.getName());
-            global_raw = legacyToMiniMessage(global_raw);
-            if (isGlobalCentered) {
-                global_raw = CenteringUtil.getCenteredMessage(global_raw);
+            for (String line : global_raw) {
+                String formattedLine = PlaceholderAPI.setPlaceholders(p, line);
+                formattedLine = PlaceholderUtils.replacePlaceholder(formattedLine, "%player%", p.getName());
+                if (isGlobalCentered) {
+                    formattedLine = CenteringUtil.getCenteredMessage(formattedLine);
+                }
+                Component msg = legacyToMiniMessageComponent(formattedLine);
+                event.quitMessage(null);           // suppress vanilla
+                Bukkit.broadcast(msg);             // fully parsed component
             }
-            Component msg = legacyToMiniMessageComponent(global_raw);
-            event.quitMessage(null);           // suppress vanilla
-            Bukkit.broadcast(msg);             // fully parsed component
         } else {
             event.quitMessage(null);
         }

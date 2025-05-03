@@ -17,7 +17,6 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static dev.xhue.neon.Utils.SerializerUtil.legacyToMiniMessage;
 import static dev.xhue.neon.Utils.SerializerUtil.legacyToMiniMessageComponent;
 
 public class onPlayerJoin implements Listener {
@@ -37,11 +36,11 @@ public class onPlayerJoin implements Listener {
 
         // Global chat join message settings
         boolean isGlobalEnabled = configManager.config.getBoolean("join.global_message.enabled");
-        String global_raw = configManager.config.getString("join.global_message.value");
+        List<String> global_raw = configManager.config.getStringList("join.global_message.value");
         boolean isGlobalCentered = configManager.config.getBoolean("join.global_message.centered");
 
         boolean isFirstJoinEnabled = configManager.config.getBoolean("join.global_message.first_join.enabled");
-        String firstJoinMessage = configManager.config.getString("join.global_message.first_join.value");
+        List<String> firstJoinMessage = configManager.config.getStringList("join.global_message.first_join.value");
 
         // Player join MOTD settings
         boolean isMOTDEnabled = configManager.config.getBoolean("join.player_motd.enabled");
@@ -126,34 +125,40 @@ public class onPlayerJoin implements Listener {
         double particleSpeed = configManager.config.getDouble("join.particle.speed", 0.1);
 
 
+        // Resource Pack settings
+        boolean isResourcePackEnabled = configManager.config.getBoolean("join.resource_pack.enabled", false);
+        String resourcePackUrl = configManager.config.getString("join.resource_pack.url");
+
+
 
 
         // global chat join message
         if (isFirstJoinEnabled && !p.hasPlayedBefore()) {
-            // first join message
-            String formattedFirstJoinMessage = PlaceholderAPI.setPlaceholders(p, firstJoinMessage);
-            formattedFirstJoinMessage = PlaceholderUtils.replacePlaceholder(formattedFirstJoinMessage, "%player%", p.getName());
-            if (isGlobalCentered) {
-                formattedFirstJoinMessage = CenteringUtil.getCenteredMessage(formattedFirstJoinMessage);
+            for (String line : firstJoinMessage) {
+                String formattedLine = PlaceholderAPI.setPlaceholders(p, line);
+                formattedLine = PlaceholderUtils.replacePlaceholder(formattedLine, "%player%", p.getName());
+                if (isGlobalCentered) {
+                    formattedLine = CenteringUtil.getCenteredMessage(formattedLine);
+                }
+                Component msg = legacyToMiniMessageComponent(formattedLine);
+                Bukkit.broadcast(msg);
             }
-            // legacy → MM tags, then parse
-            Component msg = legacyToMiniMessageComponent(formattedFirstJoinMessage);
-            Bukkit.broadcast(msg);         // fully parsed component
         }
 
+        // global chat join message
         if (isGlobalEnabled) {
-            global_raw = PlaceholderAPI.setPlaceholders(p, global_raw);
-            global_raw = PlaceholderUtils.replacePlaceholder(global_raw, "%player%", p.getName());
-            // legacy → MM tags, then parse
-            global_raw = legacyToMiniMessage(global_raw);
-            if (isGlobalCentered) {
-                global_raw = CenteringUtil.getCenteredMessage(global_raw);
+            for (String line : global_raw) {
+                String formattedLine = PlaceholderAPI.setPlaceholders(p, line);
+                formattedLine = PlaceholderUtils.replacePlaceholder(formattedLine, "%player%", p.getName());
+                if (isGlobalCentered) {
+                    formattedLine = CenteringUtil.getCenteredMessage(formattedLine);
+                }
+                Component msg = legacyToMiniMessageComponent(formattedLine);
+                e.joinMessage(null);           // suppress vanilla
+                Bukkit.broadcast(msg);         // fully parsed component
             }
-            Component msg = legacyToMiniMessageComponent(global_raw);
-            e.joinMessage(null);           // suppress vanilla
-            Bukkit.broadcast(msg);         // fully parsed component
         } else {
-            e.joinMessage(null);           // suppress vanilla
+            e.joinMessage(null);               // suppress vanilla
         }
 
 
@@ -345,6 +350,16 @@ public class onPlayerJoin implements Listener {
             p.spawnParticle(particleEffect, spawnLocation, particleAmount, offsetX, offsetY, offsetZ, particleSpeed);
         }
 
+        if (isResourcePackEnabled) {
+            try {
+                String resourcePackHash = ResourcePackUtils.getSHA1ForPack(resourcePackUrl);
+                assert resourcePackUrl != null;
+                p.setResourcePack(resourcePackUrl, resourcePackHash);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                // Optionally, fallback or notify player/admin
+            }
+        }
 
 
         // @todo: add/test vanish support -- essentials not working, but essentials vanish is bad anyway bc it sends packets
