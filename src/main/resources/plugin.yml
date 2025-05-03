@@ -1,0 +1,18 @@
+name: NeON
+version: '1.0-SNAPSHOT'
+main: dev.xhue.neon.NeON
+api-version: '1.21'
+author: "xHue"
+description: "NeON | Custom join events for your server."
+softdepend:
+  - Essentials
+  - PlaceholderAPI
+
+commands:
+    neon:
+        description: "NeON command"
+        usage: "/neon <command>"
+        aliases: [neon, neonplugin]
+        permission: neon.command
+        permission-message: "You do not have permission to use this command."
+        default: op
