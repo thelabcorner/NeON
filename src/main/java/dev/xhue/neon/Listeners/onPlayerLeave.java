@@ -1,6 +1,7 @@
 package dev.xhue.neon.Listeners;
 
 import dev.xhue.neon.Config.ConfigManager;
+import dev.xhue.neon.HologramManager;
 import dev.xhue.neon.NeON;
 import dev.xhue.neon.Utils.*;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -18,6 +19,7 @@ import org.bukkit.util.Vector;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static dev.xhue.neon.Utils.SerializerUtil.legacyToMiniMessage;
 import static dev.xhue.neon.Utils.SerializerUtil.legacyToMiniMessageComponent;
@@ -41,34 +43,23 @@ public class onPlayerLeave implements Listener {
         boolean isGlobalCentered = configManager.config.getBoolean("leave.global_message.centered", true);
 
         // Title settings
-        boolean isPlayerTitleEnabled = configManager.config.getBoolean("leave.player_title.enabled", true);
-        String player_title_raw = configManager.config.getString("leave.player_title.title", "<red><bold>GOODBYE");
-        String player_subtitle_raw = configManager.config.getString("leave.player_title.subtitle", "<gray><italic>dev.xhue.NeON");
-        long playerTitleStayMillis = configManager.config.getLong("leave.player_title.time", 3) * 1000L;
-
         boolean isGlobalTitleEnabled = configManager.config.getBoolean("leave.global_title.enabled", true);
         String global_title_raw = configManager.config.getString("leave.global_title.title", "<red><bold>PLAYER LEFT");
         String global_subtitle_raw = configManager.config.getString("leave.global_title.subtitle", "<gray><italic>dev.xhue.NeON");
         long globalTitleStayMillis = configManager.config.getLong("leave.global_title.time", 3) * 1000L;
 
-        // Action Bar settings
-        boolean isPlayerActionBarEnabled = configManager.config.getBoolean("leave.player_actionbar.enabled", true);
-        String playerActionBar_raw = configManager.config.getString("leave.player_actionbar.value", "<red>See you soon!");
-        long playerActionBarStayMillis = configManager.config.getLong("leave.player_actionbar.time", 3) * 1000L;
+        // Hologram settings
+        boolean isHologramEnabled = configManager.config.getBoolean("leave.hologram.enabled", false);
+        List<String> hologram_raw = configManager.config.getStringList("leave.hologram.value");
+        long hologramStayTicks = configManager.config.getLong("leave.hologram.duration", 3) * 20L;
 
+
+        // Action Bar settings
         boolean isGlobalActionBarEnabled = configManager.config.getBoolean("leave.global_actionbar.enabled", true);
         String globalActionBar_raw = configManager.config.getString("leave.global_actionbar.value", "<red>%left_player% left!");
         long globalActionBarStayMillis = configManager.config.getLong("leave.global_actionbar.time", 3) * 1000L;
 
         // Boss Bar settings
-        boolean isPlayerBossBarEnabled = configManager.config.getBoolean("leave.player_bossbar.enabled", false);
-        String bossbar_raw = configManager.config.getString("leave.player_bossbar.value", "<red>Goodbye!");
-        String playerBossBarColorStr = configManager.config.getString("leave.player_bossbar.color", "RED");
-        String playerBossBarStyleStr = configManager.config.getString("leave.player_bossbar.style", "PROGRESS");
-        long playerBossBarDuration = configManager.config.getLong("leave.player_bossbar.duration", 5);
-        long playerBossBarDurationTicks = playerBossBarDuration * 20L;
-        String playerBossBarDirection = configManager.config.getString("leave.player_bossbar.direction", "RIGHT_TO_LEFT");
-
         boolean isGlobalBossBarEnabled = configManager.config.getBoolean("leave.global_bossbar.enabled", false);
         String globalBossBar_raw = configManager.config.getString("leave.global_bossbar.value", "<red>%left_player% left!");
         String globalBossBarColorStr = configManager.config.getString("leave.global_bossbar.color", "RED");
@@ -139,6 +130,17 @@ public class onPlayerLeave implements Listener {
             }
         }
 
+
+        // Hologram
+        if (isHologramEnabled) {
+            List<String> finalHologram_raw = hologram_raw.stream()
+                    .map(line -> PlaceholderAPI.setPlaceholders(p, line))
+                    .map(line -> PlaceholderUtils.replacePlaceholder(line, "%player%", p.getName()))
+                    .collect(Collectors.toList());
+
+            HologramManager.spawnHologram(p, finalHologram_raw, -90f, 90f, hologramStayTicks, NeON.getPlugin(), 0.0);
+        }
+
         // Action Bar
         if (isGlobalActionBarEnabled) {
             String finalGlobalActionBar_raw = PlaceholderAPI.setPlaceholders(p, globalActionBar_raw);
@@ -146,7 +148,7 @@ public class onPlayerLeave implements Listener {
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 String processedGlobalActionBar = PlaceholderUtils.replacePlaceholder(finalGlobalActionBar_raw, "%global_player%", onlinePlayer.getName());
                 Component finalActionbarComponent = legacyToMiniMessageComponent(processedGlobalActionBar);
-                if (!isPlayerActionBarEnabled || !onlinePlayer.equals(p)) {
+                if (!onlinePlayer.equals(p)) {
                     ActionBarUtils.sendActionBar(onlinePlayer, finalActionbarComponent, globalActionBarStayMillis);
                 }
             }
@@ -159,7 +161,7 @@ public class onPlayerLeave implements Listener {
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 String processedGlobalBossBar = PlaceholderUtils.replacePlaceholder(finalGlobalBossBar_raw, "%global_player%", onlinePlayer.getName());
                 Component bossbarComponent = legacyToMiniMessageComponent(processedGlobalBossBar);
-                if (!isPlayerBossBarEnabled || !onlinePlayer.equals(p)) {
+                if (!onlinePlayer.equals(p)) {
                     BossBarUtils.handleBossBar(onlinePlayer, bossbarComponent, globalBossBarColorStr, globalBossBarStyleStr, globalBossBarDurationTicks, globalBossBarDirection);
                 }
             }

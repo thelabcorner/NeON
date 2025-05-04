@@ -119,26 +119,26 @@ public enum ConfigKey {
                     "<dark_gray>",
                     "<dark_gray>┏<strikethrough>           </strikethrough> <gradient:#FF00FF:#00FFFF><bold>SERVER STATUS</bold></gradient> <strikethrough>           </strikethrough>┓</dark_gray>",
                     "<reset>",
-                    "<dark_gray></dark_gray> <aqua>Players:</aqua> <light_purple>%server_online%</light_purple><dark_gray>/</dark_gray><light_purple>%server_max_players% <dark_gray>┃</dark_gray> <aqua>%server_variant%</aqua> <yellow>%server_version%</yellow><dark_gray></dark_gray>",
+                    " <aqua>Players:</aqua> <light_purple>%server_online%</light_purple><dark_gray>/</dark_gray><light_purple>%server_max_players% <dark_gray>┃</dark_gray> <aqua>%server_variant%</aqua> <yellow>%server_version%</yellow><dark_gray></dark_gray>",
                     "<reset>",
                     "<dark_gray>      ┗<strikethrough>                                              </strikethrough>┛</dark_gray>",
                     "<reset>",
-                    "<dark_gray>┏<strikethrough>               </strikethrough> <gradient:#FF00FF:#00FFFF><bold>CONNECTIONS</bold></gradient><strikethrough>               </strikethrough>┓</dark_gray>",
+                    "<dark_gray>┏<strikethrough>               </strikethrough> <gradient:#FF00FF:#00FFFF><bold>CONNECTIONS </bold></gradient><strikethrough>               </strikethrough>┓</dark_gray>",
                     "<reset>",
-                    "<dark_gray></dark_gray> <aqua>Server IP:</aqua> <yellow><hover:show_text:Click to copy to clipboard!><click:copy_to_clipboard:play.xhue.dev>play.xhue.dev</click></hover></yellow><dark_gray></dark_gray>",
-                    "<dark_gray></dark_gray> <aqua>Discord:</aqua> <yellow><hover:show_text:Join our community!><click:open_url:https://discord.gg/xhue>discord.gg/xhue</click></hover></yellow><dark_gray></dark_gray>",
+                    " <aqua>Server IP:</aqua> <hover:show_text:'<gray>Click to copy to clipboard!</gray>'><click:copy_to_clipboard:neon.xhue.dev><yellow>neon.xhue.dev</click></hover>",
+                    " <aqua>NeON WiKi:</aqua> <hover:show_text:'<gradient:#FF00FF:#00FFFF>NeON WiKi'><click:open_url:https://xhue.dev/neon><yellow>coming soon...</click></hover>",
                     "<reset>",
-                    "<dark_gray>     ┗<strikethrough>                                                   </strikethrough>┛</dark_gray>",
+                    "<dark_gray>      ┗<strikethrough>                                                  </strikethrough>┛</dark_gray>",
                     "<reset>",
-                    "<dark_gray>┏<strikethrough>                   </strikethrough> <gradient:#FF00FF:#00FFFF><bold>RESOURCES</bold></gradient><strikethrough>                    </strikethrough>┓</dark_gray>",
+                    "<dark_gray>┏<strikethrough>                   </strikethrough> <gradient:#FF00FF:#00FFFF><bold>RESOURCES </bold></gradient><strikethrough>                    </strikethrough>┓</dark_gray>",
                     "<reset>",
-                    "<dark_gray></dark_gray> <hover:show_text:'<rainbow>Learn about MiniMessage formatting!</rainbow>'><click:open_url:https://docs.advntr.dev/minimessage><rainbow>• MiniMessage Guide:</rainbow> <aqua><underlined>Click Here</underlined></aqua></click></hover> <dark_gray></dark_gray>",
-                    "<dark_gray></dark_gray> <gradient:#FF00FF:#00FFFF:#FF00FF>• Commands:</gradient> <hover:show_text:'<gradient:#FF00FF:#00FFFF:#FF00FF>View all commands</gradient>'><click:suggest_command:/neon help><gradient:#FF00FF:#00FFFF:#FF00FF><underlined>/neon help</underlined></gradient></click></hover> <dark_gray></dark_gray>",
+                    " <hover:show_text:'<rainbow>Learn about MiniMessage formatting!</rainbow>'><click:open_url:https://docs.advntr.dev/minimessage><rainbow>• MiniMessage Guide:</rainbow> <aqua><underlined>Click Here</underlined></aqua></click></hover> <dark_gray></dark_gray>",
+                    " <gradient:#FF00FF:#00FFFF:#FF00FF>• Commands:</gradient> <hover:show_text:'<gradient:#FF00FF:#00FFFF:#FF00FF>View all commands</gradient>'><click:suggest_command:/neon help><gradient:#FF00FF:#00FFFF:#FF00FF><underlined>/neon help</underlined></gradient></click></hover> <dark_gray></dark_gray>",
                     "<reset>",
                     "<dark_gray>     ┗<strikethrough>                                                        </strikethrough>┛</dark_gray>",
                     "<reset>",
                     "<gradient:#ED213A:#93291E><bold>✦ IMPORTANT NOTICE ✦</bold></gradient>",
-                    "<yellow><italic>Please review the server rules with /rules</italic></yellow>",
+                    "<yellow><italic>Don't forget to change this in your configuration file!</italic></yellow>",
                     "<reset>"
             ),
             List.of( // comment
@@ -152,6 +152,142 @@ public enum ConfigKey {
                     "[STRING LIST]"
             )
     ),
+
+
+    JOIN_PLAYER_HOLOGRAM_BOOLEAN(
+            "join.hologram.enabled",
+            true,
+            List.of( // comment
+                    "✦  ENABLE PLAYER JOIN HOLOGRAM",
+                    " ",
+                    "Should a hologram be shown to the joining player?",
+                    "(Visible to all players)"
+            )
+    ),
+    JOIN_PLAYER_HOLOGRAM_FIRST_JOIN_BOOLEAN(
+            "join.hologram.first_join.enabled",
+            true,
+            List.of( // comment
+                    "✦  ENABLE PLAYER FIRST TIME JOIN HOLOGRAM",
+                    " ",
+                    "Should a hologram be shown to the joining player on their first time join?",
+                    "Set this to value false to disable the hologram for first time joins.",
+                    "Set this value to \"ONLY\" to only show the hologram to first time joins.",
+                    "(Visible to all players)",
+                    "[ TRUE/FALSE || \"ONLY\" ]"
+
+            )
+    ),
+    JOIN_PLAYER_HOLOGRAM_FIRST_JOIN(
+            "join.hologram.first_join.value",
+            List.of(
+                    "<#FF00FF>✧ <#00FFFF>N<#AD00FF>e<#5A00FF>O<#0078FF>N<#FF00FF> ✧",
+                    "<dark_gray>┏<strikethrough>   </strikethrough> <gradient:#FF00FF:#00FFFF><bold>WELCOME TO NEON!</bold></gradient><strikethrough>   </strikethrough>┓</dark_gray>",
+                    "<gradient:#00FFFF:#FF00FF:#00FFFF>Happy configging!</gradient>",
+                    "<dark_gray>┗<strikethrough>                                  </strikethrough>┛</dark_gray>"
+            ),
+            List.of( // comment
+                    "✦  PLAYER FIRST TIME JOIN HOLOGRAM FORMAT",
+                    " ",
+                    "Set this to your desired first time join hologram message format.",
+                    "Use %player% to show the player username.",
+                    "[STRING LIST]"
+            )
+    ),
+
+    JOIN_PLAYER_HOLOGRAM(
+            "join.hologram.value",
+            List.of(
+                    "<#FF00FF>✧ <#00FFFF>N<#AD00FF>e<#5A00FF>O<#0078FF>N<#FF00FF> ✧",
+                    "<dark_gray>┏<strikethrough>   </strikethrough> <gradient:#FF00FF:#00FFFF><bold>WELCOME TO NEON! </bold></gradient><strikethrough>   </strikethrough>┓</dark_gray>",
+                    "<gradient:#00FFFF:#FF00FF:#00FFFF>Happy configging!</gradient>",
+                    "<dark_gray>┗<strikethrough>                                  </strikethrough>┛</dark_gray>"
+            ),
+            List.of( // comment
+                    "✦  PLAYER JOIN HOLOGRAM FORMAT",
+                    " ",
+                    "Set this to your desired join hologram message format.",
+                    "Use %player% to show the player username.",
+                    "[STRING LIST]"
+            )
+    ),
+    JOIN_PLAYER_HOLOGRAM_DURATION(
+            "join.hologram.duration",
+            15,
+            List.of( // comment
+                    "✦  PLAYER JOIN HOLOGRAM DURATION",
+                    " ",
+                    "Set this to your desired hologram display time, in seconds.",
+                    "[LONG]"
+            )
+    ),
+    JOIN_PLAYER_HOLOGRAM_DISTANCE(
+            "join.hologram.distance",
+            2.15,
+            List.of( // comment
+                    "✦  PLAYER JOIN HOLOGRAM DISTANCE",
+                    " ",
+                    "Set this to the distance of the hologram from the player's eyes.",
+                    "[DOUBLE]"
+            )
+    ),
+    JOIN_PLAYER_HOLOGRAM_TRACKING(
+            "join.hologram.tracking.enabled",
+            true,
+            List.of( // comment
+                    "✦  ENABLE PLAYER JOIN HOLOGRAM TRACKING",
+                    " ",
+                    "Should the hologram follow the player's crosshair?",
+                    "[TRUE/FALSE]"
+            )
+    ),
+    JOIN_PLAYER_HOLOGRAM_TRACKING_THROB(
+            "join.hologram.tracking.throb",
+            true,
+            List.of( // comment
+                    "✦  ENABLE PLAYER JOIN HOLOGRAM TRACKING THROB",
+                    " ",
+                    "Should the hologram do a slight throb backwards and forwards?",
+                    "Only works if tracking is enabled.",
+                    "[TRUE/FALSE]"
+            )
+    ),
+    JOIN_PLAYER_HOLOGRAM_BOUNCE(
+            "join.hologram.bounce.enabled",
+            true,
+            List.of( // comment
+                    "✦  ENABLE PLAYER JOIN HOLOGRAM BOUNCE",
+                    " ",
+                    "Should the hologram do a slight bounce?",
+                    "Only works if tracking is disabled.",
+                    "[TRUE/FALSE]"
+            )
+    ),
+    JOIN_PLAYER_HOLOGRAM_PITCH_LOCK_BOOLEAN(
+            "join.hologram.pitch_lock.enabled",
+            true,
+            List.of( // comment
+                    "✦  ENABLE PLAYER JOIN HOLOGRAM PITCH LOCK",
+                    " ",
+                    "Should the hologram be locked to the player's pitch?",
+                    "This setting essentially keeps your hologram from being unreadable at certain angles.",
+                    "[TRUE/FALSE]"
+            )
+    ),
+    JOIN_PLAYER_HOLOGRAM_PITCH_LOCK(
+            "join.hologram.pitch_lock.value",
+            List.of("25.0f", "-40.0f"),
+            List.of( // comment
+                    "✦  PLAYER JOIN HOLOGRAM PITCH LOCK VALUE",
+                    " ",
+                    "Set this to the pitch value the hologram should be locked to.",
+                    "Values are a list of two floats, the first is the max pitch, the second is the min pitch.",
+                    "Minecraft max pitch is 90.0f, min pitch is -90.0f.",
+                    "Plugin default is max 25.0f, min -40.0f.",
+                    "[MAX FLOAT, MIN FLOAT]"
+                    )
+    ),
+
 
 
     JOIN_PLAYER_TITLE_BOOLEAN(
@@ -264,7 +400,7 @@ public enum ConfigKey {
     ),
     JOIN_PLAYER_ACTIONBAR(
             "join.player_actionbar.value",
-            "<aqua>Have fun!",
+            "<gradient:#00FFFF:#FF00FF:#00FFFF>Happy configging!</gradient>",
             List.of( // comment
                     "✦  PLAYER JOIN ACTION-BAR FORMAT",
                     " ",
@@ -299,7 +435,7 @@ public enum ConfigKey {
     ),
     JOIN_GLOBAL_ACTIONBAR(
             "join.global_actionbar.value",
-            "<aqua>Have fun!",
+            "<gradient:#00FFFF:#FF00FF:#00FFFF>Happy configging!</gradient>",
             List.of( // comment
                     "✦  GLOBAL PLAYER JOIN ACTION-BAR FORMAT",
                     " ",
@@ -334,7 +470,7 @@ public enum ConfigKey {
     ),
     JOIN_PLAYER_BOSSBAR(
             "join.player_bossbar.value",
-            "<aqua>Have fun!",
+            "<gradient:#00FFFF:#FF00FF:#00FFFF>Happy configging!</gradient>",
             List.of( // comment
                     "✦  PLAYER JOIN BOSS-BAR FORMAT",
                     " ",
@@ -345,12 +481,12 @@ public enum ConfigKey {
     ),
     JOIN_PLAYER_BOSSBAR_COLOR(
             "join.player_bossbar.color",
-            "blue",
+            "WHITE",
             List.of( // comment
                     "✦  PLAYER JOIN BOSS-BAR COLOR",
                     " ",
                     "Set this to your desired join bossbar color.",
-                    "[STRING]"
+                    "[ PINK || BLUE || RED || GREEN || YELLOW || PURPLE || WHITE ]"
             )
     ),
     JOIN_PLAYER_BOSSBAR_STYLE(
@@ -382,7 +518,7 @@ public enum ConfigKey {
                     "Set this to your desired join boss-bar direction.",
                     "'_CUBIC' denoted directions use a simple cubic bezier curve to animate the boss-bar progression.",
                     "Non '_CUBIC' denoted directions use basic linear progression.",
-                    "[LEFT_TO_RIGHT || RIGHT_TO_LEFT || LEFT_TO_RIGHT_CUBIC || RIGHT_TO_LEFT_CUBIC || SOLID]"
+                    "[ LEFT_TO_RIGHT || RIGHT_TO_LEFT || LEFT_TO_RIGHT_CUBIC || RIGHT_TO_LEFT_CUBIC || SOLID ]"
             )
     ),
 
@@ -403,7 +539,7 @@ public enum ConfigKey {
     ),
     JOIN_GLOBAL_BOSSBAR(
             "join.global_bossbar.value",
-            "<aqua>Have fun!",
+            "<gradient:#00FFFF:#FF00FF:#00FFFF>Happy configging!</gradient>",
             List.of( // comment
                     "✦  GLOBAL PLAYER JOIN BOSS-BAR FORMAT",
                     " ",
@@ -452,7 +588,7 @@ public enum ConfigKey {
                     "Set this to your desired join boss-bar direction.",
                     "'_CUBIC' denoted directions use a simple cubic bezier curve to animate the boss-bar progression.",
                     "Non '_CUBIC' denoted directions use basic linear progression.",
-                    "[LEFT_TO_RIGHT || RIGHT_TO_LEFT || LEFT_TO_RIGHT_CUBIC || RIGHT_TO_LEFT_CUBIC || SOLID]"
+                    "[ LEFT_TO_RIGHT || RIGHT_TO_LEFT || LEFT_TO_RIGHT_CUBIC || RIGHT_TO_LEFT_CUBIC || SOLID ]"
             )
     ),
 
@@ -546,7 +682,7 @@ public enum ConfigKey {
             )
     ),
     JOIN_FIREWORKS_RANDOMIZE(
-            "join.fireworks.player.randomize",
+            "join.fireworks.randomize",
             false,
             List.of( // comment
                     "✦  RANDOMIZE PLAYER JOIN FIREWORKS",
@@ -686,6 +822,9 @@ public enum ConfigKey {
     ),
 
 
+
+
+
     JOIN_PLAYER_RESOURCEPACK_BOOLEAN(
             "join.resource_pack.enabled",
             false,
@@ -757,6 +896,42 @@ public enum ConfigKey {
     ),
 
 
+    LEAVE_HOLOGRAM_BOOLEAN(
+            "leave.hologram.enabled",
+            true,
+            List.of( // comment
+                    "✦  ENABLE PLAYER LEAVE HOLOGRAM",
+                    " ",
+                    "Should a hologram be shown to/at the leaving player's location?",
+                    "(Visible to all nearby players)",
+                    "NOTE: This is not a hologram that follows the player, it is a hologram that spawns at the player's login location.",
+                    "[TRUE/FALSE]"
+            )
+    ),
+    LEAVE_HOLOGRAM(
+            "leave.hologram.value",
+            List.of(
+                    "<dark_gray>[&c-&8] <light_purple>%player%",
+                    "<rainbow>Leave holograms with NeON can be multiline!</rainbow>"
+            ),
+            List.of( // comment
+                    "✦  PLAYER LEAVE HOLOGRAM FORMAT",
+                    " ",
+                    "Set this to your desired leave hologram message format.",
+                    "Use %player% to show the leaving player username.",
+                    "[STRING LIST]"
+            )
+    ),
+    LEAVE_HOLOGRAM_DURATION(
+            "leave.hologram.duration",
+            5,
+            List.of( // comment
+                    "✦  PLAYER LEAVE HOLOGRAM DURATION",
+                    " ",
+                    "Set this to your desired leave hologram duration, in seconds.",
+                    "[LONG]"
+            )
+    ),
 
     LEAVE_GLOBAL_TITLE_BOOLEAN(
             "leave.global_title.enabled",
@@ -948,7 +1123,7 @@ public enum ConfigKey {
 
     LEAVE_SOUND_GLOBAL_BOOLEAN(
             "leave.sound.global.enabled",
-            false,
+            true,
             List.of(
                     "✦  ENABLE GLOBAL PLAYER LEAVE SOUND",
                     " ",
@@ -1033,6 +1208,8 @@ public enum ConfigKey {
                     "[DOUBLE]"
             )
     ),
+
+
 
 
     ;

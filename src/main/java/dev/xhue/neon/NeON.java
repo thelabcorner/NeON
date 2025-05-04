@@ -6,8 +6,6 @@ import dev.xhue.neon.Listeners.FireworkDamageListener;
 import dev.xhue.neon.Listeners.onPlayerJoin;
 import dev.xhue.neon.Listeners.onPlayerLeave;
 import dev.xhue.neon.Metrics.Metrics;
-import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,7 +23,7 @@ public final class NeON extends JavaPlugin {
 
     private static NeON instance;
 
-    public static String prefix = "<bold><#FF00FF>✧ <#00FFFF>N<#FF00FF>e<#5A00FF>O<#0078FF>N</bold>";
+    public static String prefix = "<click:open_url:'https://modrinth.com/project/dev.xhue.neon'><bold><#FF00FF>✧ <#00FFFF>N<#FF00FF>e<#5A00FF>O<#0078FF>N <#FF00FF>✧</bold></click>";
 
     public static NeON getPlugin() { return instance; }
 
@@ -59,6 +57,8 @@ public final class NeON extends JavaPlugin {
             papiEnabled = false;
         }
 
+        HologramManager.hologramCleanup();
+
         // Plugin startup logic
         configManager = new ConfigManager(getDataFolder(), "config.yml");
         ConfigGenerator.generateConfig(configManager, logger);
@@ -75,4 +75,12 @@ public final class NeON extends JavaPlugin {
 
 
     }
+
+
+    public void onDisable() {
+        // Plugin shutdown logic
+        logger.info("NeON is shutting down...");
+        HologramManager.hologramCleanup();
+    }
+
 }

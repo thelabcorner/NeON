@@ -1,6 +1,7 @@
 package dev.xhue.neon.Listeners;
 
 import dev.xhue.neon.Config.ConfigManager;
+import dev.xhue.neon.HologramManager;
 import dev.xhue.neon.NeON;
 import dev.xhue.neon.Utils.*;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -116,6 +117,28 @@ public class onPlayerJoin implements Listener {
         int fireworkPower = configManager.config.getInt("join.fireworks.power", 1);
 
 
+        // HologramManager settings
+        boolean isHologramEnabled = configManager.config.getBoolean("join.hologram.enabled");
+        List<String> raw_hologramText = configManager.config.getStringList("join.hologram.value");
+        long hologramStayTicks = configManager.config.getLong("join.hologram.duration", 5) * 20L; // value in ticks
+        double hologramDistance = configManager.config.getDouble("join.hologram.distance", 1.5); // default distance
+        boolean showFirstJoinHologram = (configManager.config.getString("join.hologram.first_join.enabled", "true")).equalsIgnoreCase("true");
+        boolean showOnlyFirstJoinHologram = (configManager.config.getString("join.hologram.first_join.enabled", "false")).equalsIgnoreCase("only");
+        List<String> raw_firstJoinHologramText = configManager.config.getStringList("join.hologram.first_join.value");
+        boolean isTrackingHologramEnabled = configManager.config.getBoolean("join.hologram.tracking.enabled");
+        boolean isTrackingThrobEnabled = configManager.config.getBoolean("join.hologram.tracking.throb");
+        boolean isHologramBounceEnabled = configManager.config.getBoolean("join.hologram.bounce.enabled");
+        boolean isHologramPitchLockEnabled = configManager.config.getBoolean("join.hologram.pitch_lock.enabled");
+        List<String> raw_hologramPitchLock = configManager.config.getStringList("join.hologram.pitch_lock.value");
+        List<Float> hologramPitchLockValues = raw_hologramPitchLock.stream()
+            .map(Float::parseFloat)
+            .toList();
+
+        if (!isHologramPitchLockEnabled) {
+            hologramPitchLockValues = List.of(-90f, 90f);
+        }
+
+
 
         // Particles settings
         boolean isParticleEnabled = configManager.config.getBoolean("join.particle.enabled");
@@ -173,6 +196,35 @@ public class onPlayerJoin implements Listener {
                 // legacy → MM tags, then parse
                 Component msg = legacyToMiniMessageComponent(formattedMotd);
                 p.sendMessage(msg);           // fully parsed component
+            }
+        }
+
+        // Hologram
+        if (isHologramEnabled) {
+            boolean isFirstJoin = !p.hasPlayedBefore();
+            List<String> hologramText = raw_hologramText;
+
+            if (showFirstJoinHologram || showOnlyFirstJoinHologram) {
+                if (isFirstJoin) {
+                    hologramText = raw_firstJoinHologramText;
+                } else if (showOnlyFirstJoinHologram) {
+                    hologramText = List.of();
+                }
+            }
+
+            if (!hologramText.isEmpty()) {
+                List<String> processedHologramText = hologramText.stream()
+                        .map(line -> PlaceholderAPI.setPlaceholders(p, line))
+                        .map(line -> PlaceholderUtils.replacePlaceholder(line, "%player%", p.getName()))
+                        .collect(Collectors.toList());
+
+                if (isTrackingHologramEnabled) {
+                    HologramManager.spawnTrackingHologram(p, processedHologramText, hologramPitchLockValues.get(0), hologramPitchLockValues.get(1), hologramStayTicks, NeON.getPlugin(), hologramDistance, isTrackingThrobEnabled);
+                } else if (isHologramBounceEnabled) {
+                    HologramManager.spawnBouncingHologram(p, processedHologramText, hologramPitchLockValues.get(0), hologramPitchLockValues.get(1), hologramStayTicks, NeON.getPlugin(), hologramDistance, 0.05, 100);
+                } else {
+                    HologramManager.spawnHologram(p, processedHologramText, hologramPitchLockValues.get(0), hologramPitchLockValues.get(1), hologramStayTicks, NeON.getPlugin(), hologramDistance);
+                }
             }
         }
 
@@ -337,6 +389,7 @@ public class onPlayerJoin implements Listener {
         }
 
 
+
         if (isParticleEnabled) {
             // Particle effect handling
             Particle particleEffect = Particle.valueOf(particleTypeStr);
@@ -364,9 +417,7 @@ public class onPlayerJoin implements Listener {
 
         // @todo: add/test vanish support -- essentials not working, but essentials vanish is bad anyway bc it sends packets
 
-        // @todo: add support for join hologram (textdisplay? or maybe protocollib for 'client-side' holograms)
-
-        // @todo: add support for first time join messages
+        // @todo: add more support for join hologram maybe protocollib for 'client-side' holograms)
 
 
     }

@@ -1,12 +1,11 @@
 name: NeON
-version: '1.0-SNAPSHOT'
+version: ${version}
 main: dev.xhue.neon.NeON
 api-version: '1.21'
 author: "xHue"
 description: "NeON | Custom join events for your server."
-softdepend:
-  - Essentials
-  - PlaceholderAPI
+website: "https://ko-fi.com/xhue"
+depend: [PlaceholderAPI]
 
 commands:
     neon:

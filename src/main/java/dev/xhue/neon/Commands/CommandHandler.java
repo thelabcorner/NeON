@@ -39,12 +39,12 @@ public class CommandHandler implements CommandExecutor {
                         sender.sendMessage(successMessage);
                         plugin.getPluginLogger().info(legacyFromMiniMessage(NeON.prefix + "<dark_gray> » <gray>Configuration reloaded by " + sender.getName() + ".</gray>"));
                     } else {
-                        Component errorMessage = miniMessage.deserialize(NeON.prefix + "<dark_gray> » <red>Failed to reload NeON configuration. Check console for errors.</red>");
+                        Component errorMessage = miniMessage.deserialize(NeON.prefix + "<dark_gray> » <red>Failed to reload NeON configuration. Configuration in memory remains unchanged. Check console for errors.</red>");
                         sender.sendMessage(errorMessage);
                     }
 
                 } catch (Exception e) {
-                    Component errorMessage = miniMessage.deserialize(NeON.prefix + "<dark_gray> » <red>Failed to reload NeON configuration. Check console for errors.</red>");
+                    Component errorMessage = miniMessage.deserialize(NeON.prefix + "<dark_gray> » <red>Failed to reload NeON configuration. Configuration in memory remains unchanged. Check console for errors.</red>");
                     sender.sendMessage(errorMessage);
                     plugin.getPluginLogger().severe(legacyFromMiniMessage(NeON.prefix + "<dark_gray> » <red>Error reloading configuration: " + e.getMessage() + "</red>"));
                     e.printStackTrace();

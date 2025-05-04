@@ -16,12 +16,10 @@ public class ActionBarUtils {
             @Override
             public void run() {
                 if (System.currentTimeMillis() - startTime >= durationMillis) {
-                    plugin.getLogger().info("Cleared action bar for " + player.getName() + " after " + durationMillis + "ms");
                     this.cancel(); // Stop the repeating task
                     return;
                 }
                 player.sendActionBar(actionbarComponent);
-                plugin.getLogger().info("Sent action bar to " + player.getName());
             }
         }.runTaskTimer(plugin, 0L, 20L); // Run every tick (20 ticks = 1 second)
     }
