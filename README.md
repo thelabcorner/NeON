@@ -9,8 +9,8 @@
 
 <p align="center">
   <a href="https://github.com/thelabcorner/NeON/releases"><img alt="Latest Release" src="https://img.shields.io/github/v/release/thelabcorner/NeON?include_prereleases&label=neon"></a>
-  <a href="https://github.com/thelabcorner/NeON"><img alt="License" src="https://img.shields.io/github/license/thelabcorner/NeON"></a>
-  <a href="https://modrinth.com/plugin/dev.xhue.neon"><img alt="Modrinth Downloads" src="https://img.shields.io/modrinth/dt/47ad12d6667322c3a3845886c92d54532ac1d3d7?label=downloads"></a>
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="License" src="https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg"></a>
+  <a href="https://modrinth.com/plugin/dev.xhue.neon"><img alt="Modrinth Downloads" src="https://img.shields.io/modrinth/dt/RO9bFaqG"></a>
 </p>
 
 ---
