@@ -149,11 +149,15 @@ public class HologramManager {
                         target.setPitch(clampedPitch);
 
                         Location current = display.getLocation();
-                        Location lerped = current.clone().add(target.clone().subtract(current).multiply(lerpFactor));
-                        lerped.setYaw(target.getYaw());
-                        lerped.setPitch(clampedPitch);
-
-                        display.teleport(lerped);
+                        Location lerped;
+                        if (!current.getWorld().equals(target.getWorld())) {
+                            display.teleport(target); // fallback: just teleport directly
+                        } else {
+                            lerped = current.clone().add(target.clone().subtract(current).multiply(lerpFactor));
+                            lerped.setYaw(target.getYaw());
+                            lerped.setPitch(clampedPitch);
+                            display.teleport(lerped);
+                        }
                         y -= LINE_SPACING;
                     }
                     return false;
