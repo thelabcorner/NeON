@@ -10,7 +10,7 @@
 <p align="center">
   <a href="https://github.com/thelabcorner/NeON/releases"><img alt="Latest Release" src="https://img.shields.io/github/v/release/thelabcorner/NeON?include_prereleases&label=neon"></a>
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="License" src="https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg"></a>
-  <a href="https://modrinth.com/plugin/dev.xhue.neon"><img alt="Modrinth Downloads" src="https://img.shields.io/modrinth/dt/RO9bFaqG"></a>
+  <a href="https://modrinth.com/plugin/neonwelcome"><img alt="Modrinth Downloads" src="https://img.shields.io/modrinth/dt/RO9bFaqG"></a>
 </p>
 
 ---
